@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        button, hr, input {
+            overflow: visible;
+        }
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(135deg, #670d10 0%, #092756 100%);
+        }
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: auto;
+        }
+        .login h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 13px;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            background-color: #4a77d4;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-primary:hover {
+            background-color: #6eb6de;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login">
+        <h1>Acceso</h1>
+        <!-- Mensaje de error -->
+        <div class="error" id="error-message"></div>
+        <!-- Formulario de inicio de sesión -->
+        <input type="text" id="username" placeholder="Usuario" required="required">
+        <input type="password" id="password" placeholder="Contraseña" required="required">
+        <button class="btn-primary" id="login-btn">Ingresar</button>
+    </div>
+
+    <script>
+        const _0x33cc6d=_0x201b;(function(_0x43519b,_0x166a41){const _0x34e2fd=_0x201b,_0xfc2d7f=_0x43519b();while(!![]){try{const _0x1fd48a=-parseInt(_0x34e2fd(0xad))/0x1+-parseInt(_0x34e2fd(0x97))/0x2*(-parseInt(_0x34e2fd(0xa7))/0x3)+-parseInt(_0x34e2fd(0xb1))/0x4*(parseInt(_0x34e2fd(0xa9))/0x5)+parseInt(_0x34e2fd(0xa8))/0x6+-parseInt(_0x34e2fd(0xab))/0x7*(parseInt(_0x34e2fd(0xa5))/0x8)+parseInt(_0x34e2fd(0xaa))/0x9*(-parseInt(_0x34e2fd(0x96))/0xa)+-parseInt(_0x34e2fd(0x9e))/0xb*(-parseInt(_0x34e2fd(0x98))/0xc);if(_0x1fd48a===_0x166a41)break;else _0xfc2d7f['push'](_0xfc2d7f['shift']());}catch(_0x1e3c2c){_0xfc2d7f['push'](_0xfc2d7f['shift']());}}}(_0x29ab,0xa6ce4));const users=[{'username':_0x33cc6d(0x9c),'password':_0x33cc6d(0xa6)},{'username':'user2','password':_0x33cc6d(0xa4)}];function _0x29ab(){const _0x3f75d6=['5GKSruW','66735aWUVeu','20594VFpkfj','protected.html','654931FkijsV','password','username','value','5087072IofhOO','loggedInUser','1730RtcKos','4EZcxjW','3372OuIJIm','find','Credenciales\x20incorrectas','location','jagullo','innerText','57299dBBFDq','addEventListener','error-message','click','getElementById','setItem','password2','192hAkwxA','1111','1977654JssmGZ','7087038KlESHl'];_0x29ab=function(){return _0x3f75d6;};return _0x29ab();}function _0x201b(_0x4932a4,_0x7d3875){const _0x29ab40=_0x29ab();return _0x201b=function(_0x201b2b,_0x330ccd){_0x201b2b=_0x201b2b-0x95;let _0x2296aa=_0x29ab40[_0x201b2b];return _0x2296aa;},_0x201b(_0x4932a4,_0x7d3875);}document[_0x33cc6d(0xa2)]('login-btn')[_0x33cc6d(0x9f)](_0x33cc6d(0xa1),function(){const _0x2da9d0=_0x33cc6d,_0x418dcd=document[_0x2da9d0(0xa2)](_0x2da9d0(0xaf))[_0x2da9d0(0xb0)],_0x54efea=document[_0x2da9d0(0xa2)]('password')[_0x2da9d0(0xb0)],_0xb774c3=users[_0x2da9d0(0x99)](_0x3d7d78=>_0x3d7d78[_0x2da9d0(0xaf)]===_0x418dcd&&_0x3d7d78[_0x2da9d0(0xae)]===_0x54efea);_0xb774c3?(localStorage[_0x2da9d0(0xa3)](_0x2da9d0(0x95),_0x418dcd),window[_0x2da9d0(0x9b)]['href']=_0x2da9d0(0xac)):document[_0x2da9d0(0xa2)](_0x2da9d0(0xa0))[_0x2da9d0(0x9d)]=_0x2da9d0(0x9a);});
+
+        // Si hay un mensaje de error en la URL, mostrarlo
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            document.getElementById('error-message').innerText = error;
+        }
+    </script>
+
+</body>
+</html>
