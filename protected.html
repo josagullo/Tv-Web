@@ -480,24 +480,47 @@
         a.download = 'enlaces.json';
         a.click();
     }
-   
 
-    // Función para importar enlaces desde archivo JSON
+    // Función optimizada para importar enlaces desde archivo JSON
     function importarEnlaces(event) {
-        const file = event.target.files[0];
+        const file = event.target.files[0]; // Obtener el archivo
+        if (!file) {
+            alert("No se ha seleccionado ningún archivo.");
+            return;
+        }
+
         const reader = new FileReader();
+
         reader.onload = function(e) {
-            const enlacesImportados = JSON.parse(e.target.result);
-            localStorage.clear(); // Limpiar localStorage antes de la importación
-            localStorage.setItem('canales', JSON.stringify(enlacesImportados.canales));
-            localStorage.setItem('Series y Películas', JSON.stringify(enlacesImportados.seriesPeliculas));
-            localStorage.setItem('Deportes', JSON.stringify(enlacesImportados.deportes));
-            localStorage.setItem('El Chavo', JSON.stringify(enlacesImportados.elChavo)); // Añadir sección El Chavo
-            location.reload(); // Recargar para actualizar los datos
+            try {
+                // Parsear el contenido del archivo JSON
+                const enlacesImportados = JSON.parse(e.target.result);
+
+                // Verifica que el JSON tenga la estructura esperada
+                if (!enlacesImportados.canales || !enlacesImportados.seriesPeliculas) {
+                    throw new Error("Estructura de JSON incorrecta");
+                }
+
+                // Limpiar localStorage antes de la importación
+                localStorage.clear();
+
+                // Guardar los datos importados en localStorage
+                localStorage.setItem('canales', JSON.stringify(enlacesImportados.canales));
+                localStorage.setItem('Series y Películas', JSON.stringify(enlacesImportados.seriesPeliculas));
+                localStorage.setItem('Deportes', JSON.stringify(enlacesImportados.deportes || []));
+                localStorage.setItem('El Chavo', JSON.stringify(enlacesImportados.elChavo || []));
+
+                // Recargar la página para actualizar los datos
+                location.reload();
+
+            } catch (error) {
+                alert("Error al importar el archivo: " + error.message);
+            }
         };
+
         reader.readAsText(file);
     }
-	
+
     // Función para filtrar canales
     function filtrarCanales() {
         const filtro = document.getElementById('buscarCanal').value.toLowerCase();
@@ -561,114 +584,113 @@
         }
     }
 
-// Función para agregar canal con datos (nombre, enlaces, logo)
-function agregarCanalConDatos(nombre, enlaces, logo) {
-    const tbody = document.getElementById('canalesTbody');
-    const fila = document.createElement('tr');
-    const tdCanal = document.createElement('td');
-    const tdEnlaces = document.createElement('td');
-    const tdAcciones = document.createElement('td');
+    // Función para agregar canal con datos (nombre, enlaces, logo)
+    function agregarCanalConDatos(nombre, enlaces, logo) {
+        const tbody = document.getElementById('canalesTbody');
+        const fila = document.createElement('tr');
+        const tdCanal = document.createElement('td');
+        const tdEnlaces = document.createElement('td');
+        const tdAcciones = document.createElement('td');
 
-    fila.style.cursor = 'pointer';
-    fila.onclick = function() {
-        const dropdown = document.getElementById(`links${nombre}`);
-        dropdown.classList.toggle('show');
-    };
+        fila.style.cursor = 'pointer';
+        fila.onclick = function() {
+            const dropdown = document.getElementById(`links${nombre}`);
+            dropdown.classList.toggle('show');
+        };
 
-    const img = document.createElement('img');
-    img.src = logo;
-    img.className = 'img_Logo';
-    img.loading = 'lazy';
-    tdCanal.appendChild(img);
+        const img = document.createElement('img');
+        img.src = logo;
+        img.className = 'img_Logo';
+        img.loading = 'lazy';
+        tdCanal.appendChild(img);
 
-    const divCanal = document.createElement('div');
-    divCanal.classList.add('nombre-canal');
-    divCanal.textContent = nombre;
-    tdEnlaces.appendChild(divCanal);
+        const divCanal = document.createElement('div');
+        divCanal.classList.add('nombre-canal');
+        divCanal.textContent = nombre;
+        tdEnlaces.appendChild(divCanal);
 
-    const dropdown = document.createElement('div');
-    dropdown.className = 'dropdown-content';
-    dropdown.id = `links${nombre}`;
+        const dropdown = document.createElement('div');
+        dropdown.className = 'dropdown-content';
+        dropdown.id = `links${nombre}`;
 
-    // Mostrar los enlaces como "Opción X"
-    enlaces.forEach((enlace, index) => crearLinkElement(dropdown, enlace, index));
-    tdEnlaces.appendChild(dropdown);
+        // Mostrar los enlaces como "Opción X"
+        enlaces.forEach((enlace, index) => crearLinkElement(dropdown, enlace, index));
+        tdEnlaces.appendChild(dropdown);
 
-    // Input para agregar nuevos enlaces
-    const inputContainer = document.createElement('div');
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = `Agregar nuevo link para ${nombre}`;
-    input.id = `nuevoLink${nombre}`;
-    input.addEventListener('click', event => event.stopPropagation());
+        // Input para agregar nuevos enlaces
+        const inputContainer = document.createElement('div');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = `Agregar nuevo link para ${nombre}`;
+        input.id = `nuevoLink${nombre}`;
+        input.addEventListener('click', event => event.stopPropagation());
 
-    const buttonAgregar = document.createElement('button');
-    buttonAgregar.textContent = 'Agregar';
-    buttonAgregar.onclick = () => agregarLink(nombre);
-    buttonAgregar.addEventListener('click', event => event.stopPropagation());
+        const buttonAgregar = document.createElement('button');
+        buttonAgregar.textContent = 'Agregar';
+        buttonAgregar.onclick = () => agregarLink(nombre);
+        buttonAgregar.addEventListener('click', event => event.stopPropagation());
 
-    inputContainer.appendChild(input);
-    inputContainer.appendChild(buttonAgregar);
-    dropdown.appendChild(inputContainer);
+        inputContainer.appendChild(input);
+        inputContainer.appendChild(buttonAgregar);
+        dropdown.appendChild(inputContainer);
 
-    const btnSubir = document.createElement('button');
-    btnSubir.textContent = '⬆';
-    btnSubir.onclick = () => moverFila(fila, 'arriba');
+        const btnSubir = document.createElement('button');
+        btnSubir.textContent = '⬆';
+        btnSubir.onclick = () => moverFila(fila, 'arriba');
 
-    const btnBajar = document.createElement('button');
-    btnBajar.textContent = '⬇';
-    btnBajar.onclick = () => moverFila(fila, 'abajo');
+        const btnBajar = document.createElement('button');
+        btnBajar.textContent = '⬇';
+        btnBajar.onclick = () => moverFila(fila, 'abajo');
 
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar Canal';
-    botonEliminar.onclick = function() {
-        eliminarCanal(fila);
-    };
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar Canal';
+        botonEliminar.onclick = function() {
+            eliminarCanal(fila);
+        };
 
-    tdAcciones.appendChild(btnSubir);
-    tdAcciones.appendChild(btnBajar);
-    tdAcciones.appendChild(botonEliminar);
+        tdAcciones.appendChild(btnSubir);
+        tdAcciones.appendChild(btnBajar);
+        tdAcciones.appendChild(botonEliminar);
 
-    fila.appendChild(tdCanal);
-    fila.appendChild(tdEnlaces);
-    fila.appendChild(tdAcciones);
-    tbody.appendChild(fila);
+        fila.appendChild(tdCanal);
+        fila.appendChild(tdEnlaces);
+        fila.appendChild(tdAcciones);
+        tbody.appendChild(fila);
 
-    guardarCanalesLocalStorage();
-}
-
-// Función para crear un nuevo enlace dentro de un canal
-function crearLinkElement(container, url, index) {
-    const containerLink = document.createElement('div');
-    containerLink.className = 'link-container';
-
-    const favicon = document.createElement('img');
-    try {
-        favicon.src = `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
-    } catch (e) {
-        favicon.src = 'Logos/TvWeb.ico'; // Favicon por defecto
-    }
-    favicon.className = 'favicon';
-    favicon.alt = 'Favicon';
-
-    const enlace = document.createElement('a');
-    enlace.href = url;
-    enlace.textContent = `Opción ${index + 1}`; // Mostrar "Opción X"
-    enlace.target = '_blank'; // Abrir en una nueva pestaña
-
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar';
-    botonEliminar.onclick = function() {
-        eliminarLink(botonEliminar);
         guardarCanalesLocalStorage();
-    };
+    }
 
-    containerLink.appendChild(favicon);
-    containerLink.appendChild(enlace);
-    containerLink.appendChild(botonEliminar);
-    container.appendChild(containerLink);
-}
+    // Función para crear un nuevo enlace dentro de un canal
+    function crearLinkElement(container, url, index) {
+        const containerLink = document.createElement('div');
+        containerLink.className = 'link-container';
 
+        const favicon = document.createElement('img');
+        try {
+            favicon.src = `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
+        } catch (e) {
+            favicon.src = 'Logos/TvWeb.ico'; // Favicon por defecto
+        }
+        favicon.className = 'favicon';
+        favicon.alt = 'Favicon';
+
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.textContent = `Opción ${index + 1}`; // Mostrar "Opción X"
+        enlace.target = '_blank'; // Abrir en una nueva pestaña
+
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = function() {
+            eliminarLink(botonEliminar);
+            guardarCanalesLocalStorage();
+        };
+
+        containerLink.appendChild(favicon);
+        containerLink.appendChild(enlace);
+        containerLink.appendChild(botonEliminar);
+        container.appendChild(containerLink);
+    }
 
     // Función para agregar nuevo enlace a un canal
     function agregarLink(canal) {
@@ -704,14 +726,13 @@ function crearLinkElement(container, url, index) {
     }
 
     // Cargar los canales desde localStorage
-function cargarCanalesLocalStorage() {
-    const canales = JSON.parse(localStorage.getItem('canales')) || [];
-    canales.forEach(canalData => {
-        const { canal, logo, enlaces } = canalData;
-        agregarCanalConDatos(canal, enlaces, logo); // Cargar el canal con los enlaces
-    });
-}
-
+    function cargarCanalesLocalStorage() {
+        const canales = JSON.parse(localStorage.getItem('canales')) || [];
+        canales.forEach(canalData => {
+            const { canal, logo, enlaces } = canalData;
+            agregarCanalConDatos(canal, enlaces, logo); // Cargar el canal con los enlaces
+        });
+    }
 
     // Función para mostrar una sección (Series y Películas / Deportes / El Chavo)
     function mostrarSeccion(seccion) {
@@ -827,24 +848,28 @@ function cargarCanalesLocalStorage() {
 
     // Cargar los canales y URLs al cargar la página
     window.onload = function() {
-    // Verificar si el usuario está logueado
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    if (!loggedInUser) {
-        // Si no está logueado, redirigir al login
-        window.location.href = "protected.html";
-    }
+        // Verificar si el usuario está logueado
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (!loggedInUser) {
+            // Si no está logueado, redirigir al login
+            window.location.href = "Login.html";
+        }
 
-    // Cargar canales y URLs
-    cargarCanalesLocalStorage();
-    cargarUrlsSeccion();
+        // Cargar canales y URLs
+        cargarCanalesLocalStorage();
+        cargarUrlsSeccion();
 
-    // Logout
-    document.getElementById('logout-btn').addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser');
-        window.location.href = "Login.html";
-    });
-};
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = "Login.html";
+        });
+    };
 
+</script>
+
+</body>
+</html>
 
 </script>
 
