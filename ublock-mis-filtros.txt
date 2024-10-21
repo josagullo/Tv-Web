@@ -1,0 +1,101 @@
+! 20 sept 2024 https://tele-libre.org
+tele-libre.org##.alert
+tele-libre.org##div.dark\:border-gray-600.dark\:bg-slate-700.border.bg-slate-200.rounded.p-2:nth-of-type(1)
+tele-libre.org##.card-center.card > .card-body
+tele-libre.org##.st-animated.st-inline-share-buttons.st-has-labels.st-lang-es.st-center.sharethis-inline-share-buttons
+tele-libre.org##.dark\:bg-slate-700.py-4.text-zinc-600.bg-slate-200.mt-4
+tele-libre.org##.mx-auto.w-full.player.md\:col-span-3 > .logo.text-2xl.items-center.flex-shrink-0.flex
+
+! 20 sept 2024 https://television-libre.online
+television-libre.online##.dark\:bg-slate-700.py-4.text-zinc-600.bg-slate-200.mt-4
+television-libre.online###alert
+television-libre.online##.card-body
+
+! 20 sept 2024 https://verlatelevision.com
+verlatelevision.com###st-1
+verlatelevision.com###container > .st-animated.st-inline-share-buttons.st-has-labels.st-lang-es.st-center.sharethis-inline-share-buttons
+verlatelevision.com##.footer
+verlatelevision.com##.alertt
+verlatelevision.com##.relacionadostag
+
+! 20 sept 2024 https://telefullhd.com
+telefullhd.com##.st-animated.st-inline-share-buttons.st-has-labels.st-lang-es.st-center.sharethis-inline-share-buttons
+telefullhd.com##.footer
+telefullhd.com##.alertt
+telefullhd.com##.info > p
+||telefullhd.com/imagenes/Canal_9.png$image
+
+! 20 sept 2024 https://tvlibre.org
+tvlibre.org##div.alert-soft-success.alert:nth-of-type(1)
+
+! 20 sept 2024 https://telefullhd.com
+||telefullhd.com/imagenes/america-tv.png$image
+
+! 20 sept 2024 https://tvlibre.org
+tvlibre.org##.alert-soft-primary.alert
+tvlibre.org##.card-body
+
+! 20 sept 2024 https://www.telegratishd.com
+||www.cablevisionhd.com/chat.php$subdocument
+||www.cablevisionhd.com/chat.php$subdocument
+||www.telegratishd.com/imge/donate.png$image
+www.telegratishd.com##.card-body
+www.telegratishd.com##.items-end.flex-col.flex.md\:col-span-2
+www.telegratishd.com##.col-sm-12.col-xs-12 > .block-title
+
+! 17 oct 2024 https://tvlibreonline.net
+tvlibreonline.net##.card-body
+tvlibreonline.net##.alert-soft-success.alert
+tvlibreonline.net##.items-end.flex-col.flex.md\:col-span-2
+tvlibreonline.net##.logo.text-2xl.items-center.flex-shrink-0.flex
+tvlibreonline.net##.justify-between.items-center.h-16.flex.relative
+tvlibreonline.net##.dark\:bg-slate-700.py-4.text-zinc-600.bg-slate-200.mt-4
+
+! 17 oct 2024 https://deporte-libre.top
+deporte-libre.top##.st-animated.st-inline-share-buttons.st-has-labels.st-lang-es.st-center.sharethis-inline-share-buttons
+deporte-libre.top##.card-body
+deporte-libre.top##.text-center.px-4.mx-auto.container
+
+! 17 oct 2024 https://verlatelevision.com
+verlatelevision.com##nav
+
+! 17 oct 2024 https://telefullhd.com
+telefullhd.com##nav
+||telefullhd.com/imagenes/Telefe.png$image
+
+! 17 oct 2024 https://tvlibre.org
+tvlibre.org##.dark\:bg-slate-700.py-4.text-zinc-600.bg-slate-200.mt-4
+tvlibre.org##.items-end.flex-col.flex.md\:col-span-2
+tvlibre.org##.justify-between.items-center.h-16.flex.relative
+
+! 17 oct 2024 https://www.telegratishd.com
+www.telegratishd.com##.btn-secondary.btn
+www.telegratishd.com##center > p
+www.telegratishd.com###site_header
+www.telegratishd.com##.st-inline-share-buttons.st-hidden.st-has-labels.st-lang-es.st-center.sharethis-inline-share-buttons
+www.telegratishd.com###d5rgktgm4bqo1729192684381
+www.telegratishd.com###b1soghgigj7g1729192684369
+www.telegratishd.com##.text-white.bg-dark.card
+
+! 17 oct 2024 https://www.vertvcable.com
+www.vertvcable.com###header
+www.vertvcable.com###subheader
+www.vertvcable.com##.app-s > b
+www.vertvcable.com###footer
+
+! 17 oct 2024 https://www.tvplusgratis2.com
+www.tvplusgratis2.com##.items-end.flex-col.flex.md\:col-span-2
+www.tvplusgratis2.com###site_header
+www.tvplusgratis2.com##.btn-secondary.btn
+www.tvplusgratis2.com##.col-sm-12.col-xs-12 > .block-title
+www.tvplusgratis2.com##.card-body
+www.tvplusgratis2.com##.text-white.bg-dark.card
+www.tvplusgratis2.com##center > p
+
+! 17 oct 2024 https://tele-libre.org
+tele-libre.org##.lg\:px-8.sm\:px-6.px-2.max-w-7xl.mx-auto
+tele-libre.org##.dark\:bg-slate-700.shadow.bg-slate-100
+
+! 17 oct 2024 https://telefullhd.com
+||telefullhd.com/imagenes/national-geographic.png$image
+||telefullhd.com/imagenes/national-geographic.png$image
