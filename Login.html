@@ -20,15 +20,15 @@
         }
         .login {
             position: absolute;
-            top: 50%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 300px;
             height: auto;
+            text-align: center;
         }
         .login h1 {
             color: #fff;
-            text-align: center;
             margin-bottom: 20px;
         }
         input {
@@ -42,22 +42,44 @@
             color: #fff;
             border-radius: 4px;
         }
+
+        /* Estilo del botón centrado con efecto rainbow */
         .btn-primary {
+            width: 150px;
             background-color: #4a77d4;
             color: #ffffff;
-            border: none;
-            padding: 10px;
-            width: 100%;
             cursor: pointer;
+            padding: 10px 35px;
             border-radius: 4px;
+            margin: 0 auto;
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.5s ease;
         }
+
         .btn-primary:hover {
-            background-color: #6eb6de;
+            background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+            animation: slidebg 5s linear infinite;
         }
+
+        @keyframes slidebg {
+            to {
+                background-position: 20vw;
+            }
+        }
+
         .error {
             color: red;
-            text-align: center;
             margin-bottom: 10px;
+        }
+
+        /* Estilo del logo */
+        .login-logo img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
 
         /* Estilos para los botones de descarga en la parte inferior derecha */
@@ -100,6 +122,11 @@
 <body>
 
     <div class="login">
+        <!-- Agregar logo centrado y ajustar tamaño con max-width -->
+        <div class="login-logo">
+            <img src="Logos/joselogo.png" alt="Logo JOSETV">
+        </div>
+
         <h1>Acceso</h1>
         <!-- Mensaje de error -->
         <div class="error" id="error-message"></div>
@@ -109,11 +136,11 @@
         <button class="btn-primary" id="login-btn">Ingresar</button>
     </div>
 
-    <!-- Contenedor para las extensiones y descargas -->
+    <!-- Contenedor para la descarga de extensiones -->
     <div class="extensions-container">
         <h4>Descargar Extensiones y Filtros</h4>
-        <!-- Enlace para descargar uBlock Origin -->
-        <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm" target="_blank">Instalar uBlock Origin</a>
+        <!-- Enlace para descargar uBlock Origin Lite -->
+        <a href="https://chrome.google.com/webstore/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh" target="_blank">Instalar uBlock Origin Lite</a>
         <!-- Botón para descargar filtros personalizados de uBlock -->
         <button id="download-filters">Descargar Filtros Personalizados</button>
         <!-- Enlace para instalar VideoPlayer -->
@@ -122,6 +149,31 @@
 
     <script>
         const _0x540ebc=_0x4f88;function _0x10bb(){const _0x49dd77=['3803823bmgEtm','551526Bhuwsg','20UjVSXt','1111','getElementById','value','addEventListener','error-message','protected.html','click','1618368kuwEIf','3902268TDXvCU','password','774365yWsikF','10VtvmMW','2sMLTeL','anibal','4200385MMnwZq','href','35351850mQCpRn','setItem','username','jagullo'];_0x10bb=function(){return _0x49dd77;};return _0x10bb();}function _0x4f88(_0x54a82e,_0x4b49cf){const _0x10bbf0=_0x10bb();return _0x4f88=function(_0x4f881e,_0x768669){_0x4f881e=_0x4f881e-0x176;let _0x389fb2=_0x10bbf0[_0x4f881e];return _0x389fb2;},_0x4f88(_0x54a82e,_0x4b49cf);}(function(_0x49517f,_0x43ad22){const _0x219b20=_0x4f88,_0x22eb6b=_0x49517f();while(!![]){try{const _0x5686a6=-parseInt(_0x219b20(0x186))/0x1*(-parseInt(_0x219b20(0x188))/0x2)+-parseInt(_0x219b20(0x17a))/0x3*(-parseInt(_0x219b20(0x17b))/0x4)+parseInt(_0x219b20(0x187))/0x5*(parseInt(_0x219b20(0x184))/0x6)+parseInt(_0x219b20(0x18a))/0x7+parseInt(_0x219b20(0x183))/0x8+parseInt(_0x219b20(0x179))/0x9+-parseInt(_0x219b20(0x18c))/0xa;if(_0x5686a6===_0x43ad22)break;else _0x22eb6b['push'](_0x22eb6b['shift']());}catch(_0x3c6fd5){_0x22eb6b['push'](_0x22eb6b['shift']());}}}(_0x10bb,0xa7070));const users=[{'username':_0x540ebc(0x178),'password':_0x540ebc(0x17c)},{'username':_0x540ebc(0x189),'password':'1234'}];document['getElementById']('login-btn')[_0x540ebc(0x17f)](_0x540ebc(0x182),function(){const _0x216318=_0x540ebc,_0x17126c=document[_0x216318(0x17d)](_0x216318(0x177))[_0x216318(0x17e)],_0x91951a=document[_0x216318(0x17d)](_0x216318(0x185))[_0x216318(0x17e)],_0x14dbce=users['find'](_0x150745=>_0x150745[_0x216318(0x177)]===_0x17126c&&_0x150745[_0x216318(0x185)]===_0x91951a);_0x14dbce?(localStorage[_0x216318(0x176)]('loggedInUser',_0x17126c),window['location'][_0x216318(0x18b)]=_0x216318(0x181)):document[_0x216318(0x17d)](_0x216318(0x180))['innerText']='Credenciales\x20incorrectas';});
+
+        // Simulación de usuarios únicos
+        const users = [
+            { username: "jagullo", password: "1111" },
+            { username: "user2", password: "password2" }
+        ];
+
+        // Evento para manejar el inicio de sesión
+        document.getElementById('login-btn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Validación de usuario
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                // Guardar en localStorage que el usuario está logueado
+                localStorage.setItem('loggedInUser', username);
+                // Redirigir a la página protegida
+                window.location.href = "protected.html";
+            } else {
+                // Mostrar mensaje de error
+                document.getElementById('error-message').innerText = "Credenciales incorrectas";
+            }
+        });
 
         // Si hay un mensaje de error en la URL, mostrarlo
         const urlParams = new URLSearchParams(window.location.search);
